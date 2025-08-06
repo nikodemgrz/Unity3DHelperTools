@@ -25,8 +25,9 @@ The current dependency is a fork with performance improvements ([https://github.
 The original NaughtyAttributes package works as well though and if you already have it installed, you don't have to add the forked branch in the following steps!
 
 Add the following line to the "dependencies" section to include this package:
-
-"com.nikosassets.helpers": "[https://github.com/niggo1243/Unity3DHelperTools.git#upm](https://github.com/niggo1243/Unity3DHelperTools.git#upm)"
+```
+"com.nikosassets.helpers": "https://github.com/niggo1243/Unity3DHelperTools.git#upm"
+```
 
 For my NaughtyAttributes performance improvements fork:
 ```
