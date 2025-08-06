@@ -2,7 +2,7 @@
   "name": "com.nikosassets.helpers",
   "displayName": "NikosAssets.Helpers",
   "version": "2.0.0",
-  "unity": "2019.4",
+  "unity": "2022.3",
   "description": "This package contains a diverse collection of helpful scripts \n(MonoBehaviours, Math, Logic & Management Helpers, Extensions, etc.)\nfor the Unity3D runtime environment and the Editor as well!",
   "keywords": [
     "utility",

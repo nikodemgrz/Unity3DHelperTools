@@ -72,7 +72,11 @@ namespace NikosAssets.Helpers.OutOfBounds
             
             _target.position = hit.point + (Vector3.up * _yResetPosOffset);
             foreach (Rigidbody rb in _rigidbodiesToResetVelocity)
+#if UNITY_6000_0_OR_NEWER
                 rb.linearVelocity = rb.linearVelocity.GetWithNewY(0);
+#else
+                rb.velocity = rb.velocity.GetWithNewY(0);
+#endif        
         }
         
         public abstract void Tick();
