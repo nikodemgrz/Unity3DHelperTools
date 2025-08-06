@@ -1,4 +1,5 @@
 ﻿using NaughtyAttributes;
+using NikosAssets.Helpers.Extensions;
 using UnityEngine;
 
 namespace NikosAssets.Helpers.Samples
@@ -66,7 +67,7 @@ namespace NikosAssets.Helpers.Samples
         [Button("Divide the values of 2 vectors")]
         public void DivideVectorValues()
         {
-            Debug.Log("Division result: " + NumericHelper.Divide2Vectors(vecA, vecB));
+            Debug.Log("Division result: " + vecA.Divide(vecB));
         }
 
         private void Update()

@@ -1,8 +1,7 @@
 {
-    "name": "NikosHelpersSampleTestAssembly",
-    "references": [
-        "GUID:8defb84a4b37da54580d6848b395ecb8"
-    ],
+    "name": "NikosAssets.Helpers.Samples.TestAssemblyA",
+    "rootNamespace": "NikosAssets.Helpers.Samples.TestAssemblyA",
+    "references": [],
     "includePlatforms": [
         "Editor"
     ],

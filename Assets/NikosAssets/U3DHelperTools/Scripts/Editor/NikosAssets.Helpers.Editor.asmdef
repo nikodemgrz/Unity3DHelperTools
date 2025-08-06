@@ -1,5 +1,6 @@
 {
-    "name": "NikosHelpersEditor",
+    "name": "NikosAssets.Helpers.Editor",
+    "rootNamespace": "NikosAssets.Helpers.Editor",
     "references": [],
     "includePlatforms": [
         "Editor"

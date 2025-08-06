@@ -4,7 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using UnityEditor;
+using UnityEditor.Compilation;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
 namespace NikosAssets.Helpers.Editor
@@ -76,6 +80,34 @@ namespace NikosAssets.Helpers.Editor
             
             //if string was null, the folder picker was aborted
             return localProjectPathOnAbort;
+        }
+
+        public static void ClonePrefabsOrGameObjects(Transform root, Transform newParent, bool cloneInactive)
+        {
+            foreach (Transform child in root)
+            {
+                GameObject cGo = child.gameObject;
+                
+                if (!cloneInactive && !cGo.activeInHierarchy)
+                    continue;
+                
+                GameObject inst = null;
+                if (PrefabUtility.IsPartOfPrefabInstance(cGo))
+                {
+                    inst = GameObject.Instantiate(cGo, newParent, true);
+                    PrefabUtility.ConvertToPrefabInstance(inst, PrefabUtility.GetCorrespondingObjectFromSource(cGo), 
+                        new ConvertToPrefabInstanceSettings()
+                        {
+                            changeRootNameToAssetName = false,
+                            recordPropertyOverridesOfMatches = true, 
+                            componentsNotMatchedBecomesOverride = true, 
+                            gameObjectsNotMatchedBecomesOverride = true
+                        }, InteractionMode.AutomatedAction);
+                }
+                else inst = GameObject.Instantiate(cGo, newParent, true);
+
+                inst.name = cGo.name;
+            }
         }
         
         /// <summary>
@@ -298,7 +330,7 @@ namespace NikosAssets.Helpers.Editor
                 AssetDatabase.Refresh();
             }
         }
-        
+
         /// <summary>
         /// Gets the last known scene view camera rotation (not from a camera component)
         /// </summary>
@@ -327,6 +359,21 @@ namespace NikosAssets.Helpers.Editor
             return new Vector3(camMatrix.m03, camMatrix.m13, camMatrix.m23);
         }
         
+        public static Scene LoadSceneAsset(SceneAsset sceneAsset)
+        {
+            Debug.Log("Attempting to open scene");
+            Assert.IsNotNull(sceneAsset);
+            
+            string scenePath = AssetDatabase.GetAssetOrScenePath(sceneAsset);
+            Assert.IsFalse(string.IsNullOrEmpty(scenePath));
+            
+            Debug.Log($"Opening scene at: {scenePath}");
+            
+            Scene scene = EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Additive);
+
+            return scene;
+        }
+        
         /// <summary>
         /// Gets the distance between the last known scene view camera (not from a camera component)
         /// and the current active selected transform in the scene hierarchy
@@ -347,9 +394,36 @@ namespace NikosAssets.Helpers.Editor
             int lastSlash = dataPath.LastIndexOf('/') + 1;
             return dataPath.Remove(lastSlash, dataPath.Length - lastSlash);
         }
+        
+        public static void CreateDirectoryFromAssetPath(string assetPath)
+        {
+            string directoryPath = Path.GetDirectoryName(assetPath);
+            if (Directory.Exists(directoryPath))
+                return;
+            Directory.CreateDirectory(directoryPath);
+        }
 
         #region Menu Items
 
+        [MenuItem("Tools/" + nameof(NikosAssets) + "/Delete All Player Prefs")]
+        public static void DeleteAllPlayerPrefs()
+        {
+            PlayerPrefs.DeleteAll();
+        }
+
+        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/Destroy Children")]
+        public static void DestroyChildren()
+        {
+            Transform activeTransform = Selection.activeTransform;
+            if (activeTransform == null)
+                return;
+            
+            for (int i = activeTransform.childCount - 1; i >= 0; i--)
+                Undo.DestroyObjectImmediate(activeTransform.GetChild(i).gameObject);
+
+            EditorUtility.SetDirty(activeTransform);
+        }
+        
         [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/Regenerate GUIDs Of Picked Folder/Recursive")]
         private static void RegenerateGUIDsRecursive()
         {
@@ -442,6 +516,12 @@ namespace NikosAssets.Helpers.Editor
             float distance = Vector3.Distance(GetSceneViewPosition(), Selection.activeTransform.position);
             Debug.Log($"The global distance between the scene view and the selected GameObject " +
                       $"'{Selection.activeGameObject.name}' is '{distance}'");
+        }
+
+        [MenuItem("Tools/" + nameof(NikosAssets) + "/" + nameof(Helpers) + "/" + nameof(RequestScriptCompilation))]
+        private static void RequestScriptCompilation()
+        {
+            CompilationPipeline.RequestScriptCompilation(RequestScriptCompilationOptions.None);
         }
 
         #endregion

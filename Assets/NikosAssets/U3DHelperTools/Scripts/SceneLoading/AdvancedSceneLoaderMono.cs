@@ -209,6 +209,18 @@ namespace NikosAssets.Helpers.SceneLoading
             sceneToLoadContainer.LoadSceneAsyncCor = StartCoroutine(IELoadAsync(sceneToLoadContainer));
         }
 
+        public virtual void Unload(string sceneToUnload)
+        {
+            var op = SceneManager.UnloadSceneAsync(sceneToUnload);
+            op.allowSceneActivation = true;
+        }
+        
+        public virtual void Unload(int sceneToUnload)
+        {
+            var op = SceneManager.UnloadSceneAsync(sceneToUnload);
+            op.allowSceneActivation = true;
+        }
+
         protected virtual void SceneToLoadContainerIsPrepared(SceneToLoadContainer sceneToLoadContainer)
         {
             sceneToLoadContainer.PreparedLoadingAt = DateTime.Now;

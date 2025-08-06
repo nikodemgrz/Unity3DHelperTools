@@ -52,5 +52,15 @@ namespace NikosAssets.Helpers.Extensions
             instance.name = scriptableObject.name; // remove (Clone) from name
             return instance;
         }
+
+        public static T GetOrAddComponent<T>(this GameObject gameObject)
+            where T : Component
+        {
+            T comp = gameObject.GetComponent<T>();
+            if (comp != null)
+                return comp;
+
+            return gameObject.AddComponent<T>();
+        }
     }
 }

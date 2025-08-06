@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using NikosAssets.Helpers.Interfaces;
 using UnityEngine;
 
@@ -277,12 +279,12 @@ namespace NikosAssets.Helpers
         /// <param name="list">Contains <typeparamref name="ChanceType"/> items that must implement the <see cref="Interfaces.IChance"/> interface</param>
         /// <typeparam name="ChanceType">Must implement the <see cref="Interfaces.IChance"/> interface</typeparam>
         /// <returns>A random <typeparamref name="ChanceType"/> otherwise default if no winner is found</returns>
-        public static ChanceType GetRandomChanceWinnerFromList<ChanceType>(List<ChanceType> list) where ChanceType : IChance
+        public static ChanceType GetRandomChanceWinnerFromList<ChanceType>(ICollection<ChanceType> list) where ChanceType : IChance
         {
-            List<ChanceType> tempList = list.FindAll(item => NumericHelper.RandomChanceSuccess01(item.Chance));
-            if (tempList.Count < 1) return default(ChanceType);
+            ChanceType[] tempList = list.Where(item => NumericHelper.RandomChanceSuccess01(item.Chance)).ToArray();
+            if (tempList.Length < 1) return default(ChanceType);
 
-            return tempList[Random.Range(0, tempList.Count)];
+            return tempList[Random.Range(0, tempList.Length)];
         }
         
         /// <summary>
@@ -295,6 +297,30 @@ namespace NikosAssets.Helpers
         {
             if (list.Count < 1) return default(T);
             return list[Random.Range(0, list.Count)];
+        }
+
+        public static void DestroyChildrenImmediate(Transform root)
+        {
+            for (int i = root.childCount - 1; i >= 0; i--)
+                GameObject.DestroyImmediate(root.GetChild(i).gameObject);
+        }
+        
+        public static void DestroyChildren(Transform root)
+        {
+            for (int i = root.childCount - 1; i >= 0; i--)
+                GameObject.Destroy(root.GetChild(i).gameObject);
+        }
+
+        public static void TransferChildrenToParent(Transform oldParent, Transform newParent, bool worldPositionStays)
+        {
+            for (int i = oldParent.childCount - 1; i >= 0; i--)
+                oldParent.GetChild(i).SetParent(newParent, worldPositionStays);
+        }
+        
+        public static void TransferChildrenToParent(Transform[] children, Transform newParent, bool worldPositionStays)
+        {
+            for (int i = children.Length - 1; i >= 0; i--)
+                children[i].SetParent(newParent, worldPositionStays);
         }
     }
 }

@@ -1,44 +1,29 @@
 {
-  "name": "com.nikosassets.u3dhelpertools",
-  "displayName": "Unity3DHelperTools",
+  "name": "com.nikosassets.helpers",
+  "displayName": "NikosAssets.Helpers",
   "version": "2.0.0",
-  "unity": "2019.4",
-  "description": "This open-source package contains a collection of handy scripts like math algorithms (E.g. Vector & Quaternion helpers) for the Unity3D runtime environment and the Editor as well",
-  "keywords": [ "utility", "inspector", "editor", "algorithms", "helpers", "common" ],
+  "unity": "2022.3",
+  "description": "This package contains a diverse collection of helpful scripts \n(MonoBehaviours, Math, Logic & Management Helpers, Extensions, etc.)\nfor the Unity3D runtime environment and the Editor as well!",
+  "keywords": [
+    "utility",
+    "inspector",
+    "editor",
+    "algorithms",
+    "helpers",
+    "common"
+  ],
   "documentationUrl": "https://niggo1243.github.io/Unity3DHelperTools/annotated.html",
-  "dependencies": {
-    "com.nikosassets.naughtyattributes": "2.1.5"
-  },
   "license": "MIT License (see the LICENSE file)",
   "samples": [
     {
-      "displayName": "Demo: Helper MonoBehaviours",
-      "description": "Contains all MonoBehaviours found in this package",
-      "path": "Samples/Demo_MonoBehaviours"
-    },
-    {
-      "displayName": "Demo: Misc Utilities",
-      "description": "Contains additional helper samples for various use cases",
-      "path": "Samples/Demo_MiscUtilities"
-    },
-    {
-      "displayName": "Demo: Extensions",
-      "description": "Contains extension samples for strings, NavmeshAgents and Coroutines",
-      "path": "Samples/Demo_Extensions"
-    },
-    {
-      "displayName": "Demo: Math Operations",
-      "description": "Contains mathematical helper samples",
-      "path": "Samples/Demo_MathOperations"
-    },
-    {
-      "displayName": "Demo: Editor and GUI",
-      "description": "Contains helper samples for the Editor (GUI)",
-      "path": "Samples/Demo_EditorAndGUI"
+      "displayName": "NikosAssets.Helpers.Samples",
+      "description": "Samples with Scenes that showcase some use cases of this package",
+      "path": "Samples~/Showcase"
     }
   ],
   "author": {
     "name": "Nikodem Grzonkowski",
-    "url": "https://github.com/niggo1243/Unity3DHelperTools"
-  }
+    "url": "https://github.com/niggo1243/"
+  },
+  "_fingerprint": "9f29a08b7a78778c5d9788b788193ab71038c07d"
 }

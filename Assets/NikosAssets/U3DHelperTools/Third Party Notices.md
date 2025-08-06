@@ -1,6 +1,5 @@
-The asset "U3DHelperTools" is governed by the MIT License (see the LICENSE file).
 Packages found in the README.md file or files under Dependencies/ folder are third party code under their own
-respective licenses:
+respective licenses.
 
 Dependencies/NaughtyAttributesPerfFork:
 

@@ -15,12 +15,12 @@ namespace NikosAssets.Helpers
         /// </summary>
         /// <param name="targets"></param>
         /// <param name="checkAgainst"></param>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TA"></typeparam>
         /// <returns>
         /// The sorted (same) list by distance to "<paramref name="checkAgainst"/>".
         /// The same list, if only 1 element is found in the list or the list is null.
         /// </returns>
-        public static List<T> GetCompsSortedByDist<T>(List<T> targets, T checkAgainst) where T : Component
+        public static List<TA> GetCompsSortedByDist<TA, TB>(List<TA> targets, TB checkAgainst) where TA : Component where TB : Component
         {
             if (targets == null || targets.Count < 2)
                 return targets;
@@ -161,9 +161,9 @@ namespace NikosAssets.Helpers
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <param name="checkAgainst"></param>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TA"></typeparam>
         /// <returns></returns>
-        public static int CompareTargetsByDistanceTo<T>(T a, T b, T checkAgainst) where T : Component
+        public static int CompareTargetsByDistanceTo<TA, TB>(TA a, TA b, TB checkAgainst) where TA : Component where TB : Component
         {
             Vector3 position = checkAgainst.transform.position;
                 

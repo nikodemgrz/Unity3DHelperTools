@@ -41,14 +41,14 @@ namespace NikosAssets.Helpers.AlarmClock
         /// </summary>
         public virtual void Tick()
         {
-            if (CheckTime())
-            {
-                // invoke the timing events
-                OnAlarm?.Invoke();
-                OnAlarmUnityEvent?.Invoke();
+            if (!CheckTime()) 
+                return;
+            
+            // invoke the timing events
+            OnAlarm?.Invoke();
+            OnAlarmUnityEvent?.Invoke();
                 
-                ResetTime();
-            }
+            ResetTime();
         }
         
         public abstract bool CheckTime();

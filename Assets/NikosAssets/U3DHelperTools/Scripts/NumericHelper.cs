@@ -296,7 +296,12 @@ namespace NikosAssets.Helpers
             // Compute target rotation (align rigidybody's up direction to the normal vector)
             Vector3 normal = direction;
             Vector3 proj = Vector3.ProjectOnPlane(transform.forward, normal);
-            Quaternion targetRotation = Quaternion.LookRotation(proj, normal); // The target rotation can be replaced with whatever rotation you want to align to
+            
+            if (proj == Vector3.zero)
+                return;
+            
+            // The target rotation can be replaced with whatever rotation you want to align to
+            Quaternion targetRotation = Quaternion.LookRotation(proj, normal);
 
             Quaternion deltaRotation = Quaternion.Inverse(transform.rotation) * targetRotation;
             Vector3 deltaAngles = GetRelativeAngles(deltaRotation.eulerAngles);
@@ -305,7 +310,8 @@ namespace NikosAssets.Helpers
             // alignmentSpeed controls how fast you rotate the body towards the target rotation
             // alignmentDamping prevents overshooting the target rotation
             // Values used: alignmentSpeed = 0.025, alignmentDamping = 0.2
-            rigidbody.AddTorque(alignmentSpeed * worldDeltaAngles - alignmentDamping * rigidbody.angularVelocity);
+            rigidbody.AddTorque(alignmentSpeed * worldDeltaAngles 
+                                - alignmentDamping * rigidbody.angularVelocity);
 
             // Convert angles above 180 degrees into negative/relative angles
             Vector3 GetRelativeAngles(Vector3 angles)
@@ -320,6 +326,11 @@ namespace NikosAssets.Helpers
 
                 return relativeAngles;
             }
+        }
+        
+        public static Vector3 RotatePointAroundPivot(Vector3 point, Vector3 pivot, Vector3 angles) 
+        {
+            return Quaternion.Euler(angles) * (point - pivot) + pivot;
         }
 
         /// <summary>

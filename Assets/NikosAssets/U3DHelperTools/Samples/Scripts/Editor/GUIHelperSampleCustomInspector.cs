@@ -3,7 +3,7 @@ using NikosAssets.Helpers.Editor;
 using UnityEditor;
 using UnityEngine;
 
-namespace NikosAssets.Helpers.Samples
+namespace NikosAssets.Helpers.Samples.Editor
 {
 
     [CustomEditor(typeof(GUIHelperSample))]

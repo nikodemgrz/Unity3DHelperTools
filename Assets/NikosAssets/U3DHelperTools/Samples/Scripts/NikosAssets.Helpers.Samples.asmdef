@@ -1,5 +1,6 @@
 {
-    "name": "NikosHelpersSamples",
+    "name": "NikosAssets.Helpers.Samples",
+    "rootNamespace": "NikosAssets.Helpers.Samples",
     "references": [
         "GUID:615f25033bca5694cb373e5797a4dca7",
         "GUID:776d03a35f1b52c4a9aed9f56d7b4229",
