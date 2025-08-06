@@ -16,61 +16,33 @@ See the API doc [here](https://niggo1243.github.io/Unity3DHelperTools/annotated.
 
 ### Unity Package Dependency
 
-To add this toolkit as a package dependency to your Unity project, locate your manifest file in "Package/manifest.json".
+To add this toolkit as a package dependency to your Unity project, locate your manifest file in "Package/manifest.json" or add the git-url via the package manager UI.
 
-First you need to add the "scopedRegistry" information to the manifest in order to resolve dependencies used by this toolkit.
+In the previous versions of this package you had to add the NaughtyAttributes package dependency to the "scopedRegistries". Unfortunately this forced you to use a specific fork or version, so to avoid that restriction you have to add the NaughtyAttributes git url (fork/ version) of your liking yourself.
 
 The current dependency is a fork with performance improvements ([https://github.com/niggo1243/NaughtyAttributes](https://github.com/niggo1243/NaughtyAttributes)) of the original open-source project NaughtyAttributes by dbrizov: [https://github.com/dbrizov/NaughtyAttributes](https://github.com/dbrizov/NaughtyAttributes)
 
-Add this snipped somewhere adjacent to the "dependencies" section in the manifest.json:
+The original NaughtyAttributes package works as well though and if you already have it installed, you don't have to add the forked branch in the following steps!
 
-```
-"scopedRegistries": 
-[
-    {
-        "name": "NaughtyAttributesPerfFork",
-        "url": "https://upm-packages.dev",
-        "scopes": [
-        "com.nikosassets.naughtyattributes"
-        ]
-    }
-]
-```
-
-Lastly add the following line to the "dependencies" section:
+Add the following line to the "dependencies" section to include this package:
 
 "com.nikosassets.helpers": "[https://github.com/niggo1243/Unity3DHelperTools.git#upm](https://github.com/niggo1243/Unity3DHelperTools.git#upm)"
 
+For my NaughtyAttributes performance improvements fork:
+```
+"com.nikosassets.naughtyattributes": "https://github.com/niggo1243/NaughtyAttributes.git#upm"
+```
+
+The original branch:
+```
+"com.dbrizov.naughtyattributes": "https://github.com/dbrizov/NaughtyAttributes.git#upm"
+```
+
 You can also choose specific releases and tags after the "#" instead of "upm".
-
-The final result should look something like this in your manifest.json:
-
-```
-{
-    "scopedRegistries": 
-    [
-        {
-            "name": "NaughtyAttributesPerfFork",
-            "url": "https://upm-packages.dev",
-            "scopes": [
-            "com.nikosassets.naughtyattributes"
-            ]
-        }
-    ], 
-    "dependencies" 
-    {
-        "com.nikosassets.helpers": "https://github.com/niggo1243/Unity3DHelperTools.git#upm"
-    }
-}
-```
 
 ### Unity Project
 
-You can simply download a (release) zip file or just clone this project via the git command:
-
-```
-git clone --recursive https://github.com/niggo1243/Unity3DHelperTools.git
-```
+You can simply download a (release) zip file or just clone this project via git.
 
 ## Features
 

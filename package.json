@@ -13,9 +13,6 @@
     "common"
   ],
   "documentationUrl": "https://niggo1243.github.io/Unity3DHelperTools/annotated.html",
-  "dependencies": {
-    "com.nikosassets.naughtyattributes": "2.1.5"
-  },
   "license": "MIT License (see the LICENSE file)",
   "samples": [
     {
