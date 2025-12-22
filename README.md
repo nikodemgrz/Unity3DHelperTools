@@ -10,7 +10,7 @@ Since I am developing and maintaining this asset package in my spare time, feel 
 
 ## Documentation
 
-See the API doc [here](https://niggo1243.github.io/Unity3DHelperTools/annotated.html)
+See the API doc [here](https://api.niko-creates.tech/helpers/annotated.html)
 
 ## Setup
 
@@ -20,18 +20,18 @@ To add this toolkit as a package dependency to your Unity project, locate your m
 
 In the previous versions of this package you had to add the NaughtyAttributes package dependency to the "scopedRegistries". Unfortunately this forced you to use a specific fork or version, so to avoid that restriction you have to add the NaughtyAttributes git url (fork/ version) of your liking yourself.
 
-The current dependency is a fork with performance improvements ([https://github.com/niggo1243/NaughtyAttributes](https://github.com/niggo1243/NaughtyAttributes)) of the original open-source project NaughtyAttributes by dbrizov: [https://github.com/dbrizov/NaughtyAttributes](https://github.com/dbrizov/NaughtyAttributes)
+The current dependency is a fork with performance improvements ([https://github.com/nikodemgrz/NaughtyAttributes](https://github.com/nikodemgrz/NaughtyAttributes)) of the original open-source project NaughtyAttributes by dbrizov: [https://github.com/dbrizov/NaughtyAttributes](https://github.com/dbrizov/NaughtyAttributes)
 
 The original NaughtyAttributes package works as well though and if you already have it installed, you don't have to add the forked branch in the following steps!
 
 Add the following line to the "dependencies" section to include this package:
 ```
-"com.nikosassets.helpers": "https://github.com/niggo1243/Unity3DHelperTools.git#upm"
+"com.nikosassets.helpers": "https://github.com/nikodemgrz/Unity3DHelperTools.git#upm"
 ```
 
 For my NaughtyAttributes performance improvements fork:
 ```
-"com.nikosassets.naughtyattributes": "https://github.com/niggo1243/NaughtyAttributes.git#upm"
+"com.nikosassets.naughtyattributes": "https://github.com/nikodemgrz/NaughtyAttributes.git#upm"
 ```
 
 The original branch:

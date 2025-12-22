@@ -12,7 +12,7 @@
     "helpers",
     "common"
   ],
-  "documentationUrl": "https://niggo1243.github.io/Unity3DHelperTools/annotated.html",
+  "documentationUrl": "https://api.niko-creates.tech/helpers/annotated.html",
   "license": "MIT License (see the LICENSE file)",
   "samples": [
     {
@@ -23,7 +23,7 @@
   ],
   "author": {
     "name": "Nikodem Grzonkowski",
-    "url": "https://github.com/niggo1243/"
+    "url": "https://github.com/nikodemgrz"
   },
   "_fingerprint": "9f29a08b7a78778c5d9788b788193ab71038c07d"
 }
