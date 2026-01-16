@@ -16,30 +16,19 @@ See the API doc [here](https://api.niko-creates.tech/helpers/annotated.html)
 
 ### Unity Package Dependency
 
-To add this toolkit as a package dependency to your Unity project, locate your manifest file in "Package/manifest.json" or add the git-url via the package manager UI.
+First you need to install the package dependency. For maintenance reasons I am no longer supporting scoped registries, so you will need to add the dependency manually as follows.<br>
+The current dependency is a fork with performance improvements (https://github.com/nikodemgrz/NaughtyAttributes) of the original open-source project NaughtyAttributes by dbrizov:
+https://github.com/dbrizov/NaughtyAttributes
 
-In the previous versions of this package you had to add the NaughtyAttributes package dependency to the "scopedRegistries". Unfortunately this forced you to use a specific fork or version, so to avoid that restriction you have to add the NaughtyAttributes git url (fork/ version) of your liking yourself.
-
-The current dependency is a fork with performance improvements ([https://github.com/nikodemgrz/NaughtyAttributes](https://github.com/nikodemgrz/NaughtyAttributes)) of the original open-source project NaughtyAttributes by dbrizov: [https://github.com/dbrizov/NaughtyAttributes](https://github.com/dbrizov/NaughtyAttributes)
-
-The original NaughtyAttributes package works as well though and if you already have it installed, you don't have to add the forked branch in the following steps!
-
-Add the following line to the "dependencies" section to include this package:
-```
-"com.nikosassets.helpers": "https://github.com/nikodemgrz/Unity3DHelperTools.git#upm"
-```
-
-For my NaughtyAttributes performance improvements fork:
-```
-"com.nikosassets.naughtyattributes": "https://github.com/nikodemgrz/NaughtyAttributes.git#upm"
-```
-
-The original branch:
-```
-"com.dbrizov.naughtyattributes": "https://github.com/dbrizov/NaughtyAttributes.git#upm"
-```
+In the Unity PackageManager either add:<br>
+```https://github.com/nikodemgrz/NaughtyAttributes.git#upm```<br>
+or:<br>
+```https://github.com/dbrizov/NaughtyAttributes.git#upm```
 
 You can also choose specific releases and tags after the "#" instead of "upm".
+
+Now for this package, add the following git url in the Unity PackageManager:<br>
+```https://github.com/nikodemgrz/Unity3DHelperTools.git#upm```
 
 ### Unity Project
 
@@ -47,7 +36,7 @@ You can simply download a (release) zip file or just clone this project via git.
 
 ## Features
 
-You can find example Scenes under "Assets/NikosAssets/U3DHelperTools/Samples/Scenes"
+You can find example Scenes under "Samples~/Scenes" in the package.
 
 ### MonoBehaviours
 
