@@ -16,83 +16,19 @@ See the API doc <a href="https://api.niko-creates.tech/helpers/annotated.html">h
 
 ### Unity Package Dependency 
 
-To add this toolkit as a package dependency to your Unity project, 
-locate your manifest file in "Package/manifest.json".
-
-First you need to add the "scopedRegistry" information to the manifest 
-in order to resolve dependencies used by this toolkit.
-
+First you need to install the package dependency. For maintenance reasons I am no longer supporting scoped registries, so you will need to add the dependency manually as follows.<br>
 The current dependency is a fork with performance improvements (https://github.com/nikodemgrz/NaughtyAttributes) of the original open-source project NaughtyAttributes by dbrizov:
 https://github.com/dbrizov/NaughtyAttributes
 
-Add this snipped somewhere adjacent to the "dependencies" section in the manifest.json:
-
-```
-"scopedRegistries": 
-[
-    {
-        "name": "NaughtyAttributesPerfFork",
-        "url": "https://upm-packages.dev",
-        "scopes": [
-        "com.nikosassets.naughtyattributes"
-        ]
-    }
-]
-```
-
-Lastly add the following line to the "dependencies" section:
-
-"com.nikosassets.u3dhelpertools": "https://github.com/nikodemgrz/Unity3DHelperTools.git#upm"
+In the Unity PackageManager either add:<br>
+```https://github.com/niggo1243/NaughtyAttributes.git#upm```<br>
+or:<br>
+```https://github.com/dbrizov/NaughtyAttributes.git#upm```
 
 You can also choose specific releases and tags after the "#" instead of "upm".
 
-The final result should look something like this in your manifest.json:
-
-```
-{
-    "scopedRegistries": 
-    [
-        {
-            "name": "NaughtyAttributesPerfFork",
-            "url": "https://upm-packages.dev",
-            "scopes": [
-            "com.nikosassets.naughtyattributes"
-            ]
-        }
-    ], 
-    "dependencies" 
-    {
-        "com.nikosassets.u3dhelpertools": "https://github.com/nikodemgrz/Unity3DHelperTools.git#upm"
-    }
-}
-```
-Or alternatively (without git urls):
-
-```
-{
-    "scopedRegistries": 
-    [
-        {
-            "name": "NaughtyAttributesPerfFork",
-            "url": "https://upm-packages.dev",
-            "scopes": [
-            "com.nikosassets.naughtyattributes"
-            ]
-        },
-        {
-            "name": "Unity3DHelperTools",
-            "url": "https://upm-packages.dev",
-            "scopes": [
-            "com.nikosassets.u3dhelpertools"
-            ]
-        }
-    ], 
-    "dependencies" 
-    {
-        "com.nikosassets.u3dhelpertools": "1.3.2"
-    }
-}
-```
+Now for this package, add the following git url in the Unity PackageManager:<br>
+```https://github.com/nikodemgrz/Unity3DHelperTools.git#upm```
 
 ### Unity Project
 
