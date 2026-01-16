@@ -21,7 +21,7 @@ The current dependency is a fork with performance improvements (https://github.c
 https://github.com/dbrizov/NaughtyAttributes
 
 In the Unity PackageManager either add:<br>
-```https://github.com/niggo1243/NaughtyAttributes.git#upm```<br>
+```https://github.com/nikodemgrz/NaughtyAttributes.git#upm```<br>
 or:<br>
 ```https://github.com/dbrizov/NaughtyAttributes.git#upm```
 
